@@ -1,0 +1,11 @@
+########## FROZEN STAGE ##########
+FROM ros:melodic-ros-core
+
+RUN apt update \
+  && apt install -y --no-install-recommends \
+  ros-melodic-roscpp-tutorials
+
+COPY ros1_entrypoint.sh /ros1_entrypoint.sh
+
+ENTRYPOINT [ "/ros1_entrypoint.sh" ]
+CMD rosrun roscpp_tutorials add_two_ints_server
